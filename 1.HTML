@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<script 
+src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+</script>
+<body ng-app="myApp" ng-controller="todoCtrl">
+ <form ng-submit="todoAdd()">
+ <input type="text" ng-model="First" size="50" placeholder="First Name">
+ <input type="text" ng-model="Last" size="50" placeholder="Last Name">
+ <input type="submit" value="Full Name">
+ </form>
+ <p> {{fullName}}</p>
+ <script>
+ var app = angular.module('myApp', []); 
+ app.controller('todoCtrl', function($scope) {
+ $scope.gap = " "
+ $scope.todoAdd = function() {$scope.fullName = $scope.First +$scope.gap +$scope.Last};
+ });
+ </script>
+</body>
+</html>

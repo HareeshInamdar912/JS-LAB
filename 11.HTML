@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script>
+var app = angular.module("myapp", []);
+app.controller("myctrl", function ($scope) {
+$scope.names = ["raja","ram","mohan","roy"];
+$scope.UpperCaseItem = function (x) {
+    $scope.upper = angular.uppercase($scope.names[x])
+    $scope.names.splice(x, 1,$scope.upper); }
+})
+</script>
+
+</head>
+<body ng-app="myapp" ng-controller="myctrl">
+<table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Button</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="x in names">
+        <td> {{x}} </td>
+        <td>
+            <spam ng-click="UpperCaseItem($index)"></br>
+            <input type="button" value="UpperCase">
+            </spam>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

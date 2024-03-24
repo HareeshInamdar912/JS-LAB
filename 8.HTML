@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+ <title>user login</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+ 
+<script>
+ var app = angular.module('myapp', []);
+app.factory('authentication', function() {
+    return {
+    isAuthenticated: false,
+    user: null   
+    }
+    });
+ app.controller('credientials', function($scope, authentication) {
+    $scope.loginform = function(isValid) {
+        $scope.logform.uname.$setValidity("username", true);
+        $scope.logform.pwd.$setValidity("pwd", true);
+        if (isValid) {
+            if ($scope.username == 'admin@evol.com' && $scope.password == '123')
+            {
+                alert("success");
+                authentication.isAuthenticated = true;
+            } 
+            else {
+                    $scope.logform.uname.$setValidity("username", false);
+                    $scope.logform.pwd.$setValidity("pwd", false);
+            }
+        }
+    };
+    });
+</script> 
+
+</head>
+<body ng-controller="credientials">
+ <form ng-submit="loginform(logform.$valid)" class="ng-scope ng-pristine ng-valid center" name="logform" >
+ <label><b>Email</b></label>
+ <input type="email" name="uname" placeholder="you@example.com" ng-model="username" required>
+ <span style="color: Red" ng-show="logform.$submitted && logform.uname.$error.required">* Email is required</span>
+ <span style="color: Red" ng-show="logform.$submitted && logform.uname.$error.username">* Invalid ID </span>
+ <br>
+ <br>
+ 
+ <label form="pwdinput"><b>Password</b></label>
+ <input type="password" name="pwd" placeholder="*******" ng-model="password" required>
+ <span ng-show="logform.$submitted && logform.pwd.$error.required">* Password is required</span>
+ <span ng-show="logform.$submitted && logform.pwd.$error.pwd">* Invalid Password</span>
+ <br>
+ <br>
+
+ <button type="cancel" class="btn" ng-click="toggle_cancel()">Cancel</button>
+ <button class="btn btn-primary" type="submit">Login</button>
+
+ </form>
+ </body>
+</html>
+

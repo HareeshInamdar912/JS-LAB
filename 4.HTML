@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html ng-app="myapp">
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body ng-controller="myctrl">
+ Enter the Number
+ <input type="text" ng-model="number">
+ </br>
+ <input type="button" value="Calculate" ng-click="cal()">
+ </br>
+ <h1>Fact. of a number is {{res}}</h1>
+ </br>
+ <h1>square of a given number is {{square}}<h1>
+</body>
+ 
+<script>
+ var app = angular.module("myapp",[]);
+ app.controller("myctrl", function($scope){
+ $scope.cal = function(){
+ var num = $scope.number;
+ var num1 = $scope.number;
+ var i = 1;
+ var fact = 1;
+ for(i=num;i>=1;i--)
+ {
+ fact = fact*i
+ }
+ $scope.res = fact
+ $scope.square = num1 * num1;
+ }
+ });
+ </script>
+</html>

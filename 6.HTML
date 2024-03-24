@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+ var app = angular.module("myapp", []);
+ app.controller("myctrl", function ($scope) {
+ $scope.names = [];
+    
+ $scope.AddItem = function () {
+ $scope.names.push($scope.Addme);}
+
+ $scope.RemoveItem = function (x) {
+ $scope.names.splice(x, 1);}
+ 
+ $scope.EditItem = function (x) {
+ $scope.names.splice(x, 1,$scope.Addme);}
+ })
+</script>
+
+ <body ng-controller="myctrl">
+    <table>
+        <thead>
+            <tr>
+                <th>Read</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="x in names">
+            <td> {{x}} </td>
+            <td> 
+                <spam ng-click="RemoveItem($index)"></br>
+                <input type="button" value="Remove">
+                </spam> 
+            </td>
+            <td>
+                <spam ng-click="EditItem($index)"></br>
+                <input type="button" value="Edit">
+                </span>
+            </td>
+        </tr>
+        <input ng-model="Addme">
+        <button ng-click="AddItem()">Create</button>
+    </table>
+ </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="ListController">
+  <table>
+
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>CGPA</th>
+      </tr>
+    </thead>
+
+    <tr ng-repeat="item in itemsDetails">
+      <td> {{item.name}} </td>
+      <td> {{item.CGPA}} </td>
+    </tr>
+
+    <tr>
+      <td>-------------------------------------</td>
+    </tr>
+
+    <tr>
+      <td> Number of students</td>
+      <td>{{res}}</td>
+    </tr>
+
+  </table>
+</body>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('ListController', function ($scope) {
+ $scope.itemsDetails = [
+    { name: 'Batman', CGPA: '9'}, 
+    { name: 'Ant Man', CGPA: '8'}, 
+    { name: 'Superman', CGPA: '8', }, 
+    { name: 'Captain America', CGPA: '7'},
+    { name: 'Thor', CGPA: '7'}
+ ];
+ $scope.res = $scope.itemsDetails.length
+});
+</script>
+</html>
